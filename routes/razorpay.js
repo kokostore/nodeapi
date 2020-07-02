@@ -6,7 +6,7 @@ const {requireSignin} = require("../controllers/auth");
 
 const router = express.Router();
 
-router.get('/razorpay/getOrderId/:userId', requireSignin, hasAuthorization, razor_CreateOrder);
+router.post('/razorpay/getOrderId/:userId', requireSignin, hasAuthorization, razor_CreateOrder);
 router.post('/check_success/:userId', requireSignin, hasAuthorization, razor_verify);
 //router.post("/verification", razor_validate);
 

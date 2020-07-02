@@ -59,15 +59,15 @@ exports.razor_verify = (req, res) => {
 
 exports.razor_CreateOrder = async (req, res) => {
 	const payment_capture = 1;
-	const amount = 5;
+	const amount =(req.body.amount);
 	const currency = 'INR';
     const options = {
-		amount: (amount*100).toString(),
+		amount: (amount*100),
     	currency,
     	receipt: shortid.generate(),  // Internal receipt id
 		payment_capture
 	    };
-    await instance.orders.create(options, async function (err, order) {
+    await instance.orders.create(options, async (err, order)=> {
         if (err) {
             return res.status(500).json({
                 message: "Something Went Wrong"
